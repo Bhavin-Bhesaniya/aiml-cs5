@@ -1,0 +1,221 @@
+/* CSS Variables for Light and Dark Theme */
+
+/* Light Theme (Default) */
+:root {
+    --primary-color: #ff9900;
+    --primary-color-rgb: 255, 153, 0;
+    --secondary-color: #146eb4;
+    --accent-color: #ff9900;
+    --accent-hover: #e88700;
+    --success-color: #067d62;
+    --error-color: #d13212;
+    --warning-color: #f0ad4e;
+    --info-color: #0073bb;
+    
+    --bg-color: #ffffff;
+    --card-bg: #ffffff;
+    --header-bg: #131921;
+    --nav-bg: #232f3e;
+    --input-bg: #ffffff;
+    --hover-bg: #f3f3f3;
+    
+    --text-color: #0f1111;
+    --text-muted: #565959;
+    --text-light: #ffffff;
+    
+    --border-color: #ddd;
+    --shadow: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #ff9900;
+    --primary-color-rgb: 255, 153, 0;
+    --secondary-color: #4a9eff;
+    --accent-color: #ff9900;
+    --accent-hover: #ffad33;
+    --success-color: #00d084;
+    --error-color: #ff4757;
+    --warning-color: #ffa502;
+    --info-color: #3742fa;
+    
+    --bg-color: #0f1419;
+    --card-bg: #1a1f2e;
+    --header-bg: #0f1419;
+    --nav-bg: #1a1f2e;
+    --input-bg: #2a2f3e;
+    --hover-bg: #2a2f3e;
+    
+    --text-color: #ffffff;
+    --text-muted: #a0a6b8;
+    --text-light: #ffffff;
+    
+    --border-color: #3a3f4e;
+    --shadow: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* Theme Transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Header adjustments for both themes */
+.header {
+    background: var(--header-bg);
+    color: var(--text-light);
+}
+
+.header .logo h1 {
+    color: var(--primary-color);
+}
+
+.header .search-category,
+.header .search-input {
+    background: var(--input-bg);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+}
+
+.header .user-btn,
+.header .theme-toggle,
+.header .wishlist-btn,
+.header .cart-btn {
+    color: var(--text-light);
+}
+
+.header .user-btn:hover,
+.header .theme-toggle:hover,
+.header .wishlist-btn:hover,
+.header .cart-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Navigation adjustments */
+.navbar {
+    background: var(--nav-bg);
+}
+
+.navbar .menu-toggle,
+.navbar .nav-links a {
+    color: var(--text-light);
+}
+
+.navbar .menu-toggle:hover,
+.navbar .nav-links a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Dark theme specific adjustments */
+[data-theme="dark"] .product-card {
+    border-color: var(--border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .product-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .category-card {
+    border-color: var(--border-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .category-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .modal-content {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] .dropdown-menu {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .toast {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Focus styles for accessibility */
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Animation for theme switching */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .theme-toggle i {
+        transition: transform 0.3s ease;
+    }
+    
+    .theme-toggle:hover i {
+        transform: rotate(180deg);
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .navbar,
+    .theme-toggle,
+    .modal,
+    .toast-container {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --text-color: #000000;
+        --bg-color: #ffffff;
+    }
+    
+    [data-theme="dark"] {
+        --border-color: #ffffff;
+        --text-color: #ffffff;
+        --bg-color: #000000;
+    }
+}
